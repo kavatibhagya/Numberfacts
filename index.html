@@ -24,7 +24,7 @@
                 <div class="card bg-info text-white mt-5 p-4">
                     <h1>Number Facts</h1>
                     <p>Enter any number and get random fact</p>
-                    <input type="number" class="form-control form-control-lg" id="Number-input" placeholder="Enter any number..." >
+                    <input type="number" class="form-control form-control-lg" id="numberInput" placeholder="Enter any number..." >
                     <div id="fact" class="card-body" >
                         <h4 class="card-title">
                             Number Fact
@@ -38,6 +38,25 @@
     <script>
         let fact =document.querySelector('#fact');
         let factText= document.querySelector('#factText');
+         
+         let numberInput = document.querySelector('#numberInput')
+        numberInput.addEventListener('input', getFactAjax);
+
+
+         function getFactAjax()
+         {
+                let number = numberInput.value;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://numbersapi.com/'+number);
+                xhr.onload = function()
+                {
+                    if(this.status==200)
+                    {
+                        console.log(this.responseText);
+                    }
+                }
+                xhr.send();
+         }
     </script>
      
  </body>
