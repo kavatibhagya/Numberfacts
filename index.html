@@ -51,8 +51,16 @@
                 xhr.onload = function()
                 {
                     if(this.status==200)
-                    {
-                        console.log(this.responseText);
+                    { 
+                        if(number!=''){
+                        fact.style.display  ='block';
+                        factText.innerText = this.responseText;
+                        }
+                        else {
+                            fact.style.display = '';
+                            factText.innerText = '';
+                        }
+
                     }
                 }
                 xhr.send();
